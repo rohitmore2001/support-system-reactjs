@@ -1,0 +1,86 @@
+.support-banner{
+    height: 200px !important;
+    width: 100% !important;
+}
+
+.nav-buttons-global{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.raise-ticket{
+    margin: 0% 2%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.raise-ticket-text{
+    font-weight: bold;
+    font-size: 20px;
+    border: 3px solid black;
+    /* display: inline-block; */
+    padding: 2px 8px;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    cursor: pointer;
+}
+
+.create-ticket-card{
+    max-width: 600px;
+    margin: auto;
+    margin-top: 7%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0,  0, 0.19) ;
+    background-color: white;
+    z-index: 1;
+}
+
+.table-head{
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.table-cell{
+    text-align: center !important;
+}
+
+.registration-form{
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0,  0, 0.19) ;
+    background-color: white;
+    z-index: 1;
+    padding: 1%;
+}
+
+.ticket-text-ml{
+    margin-left: 1%;
+}
+
+.homebG{
+    width: 100% !important;
+    height: 88.5vh;
+    overflow: hidden !important;
+}
+
+.home-container {
+    position: relative;
+  }
+  
+  .content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+  }
+  
