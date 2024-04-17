@@ -17,7 +17,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Chip, Menu } from '@mui/material';
 
 const pages = ['Home', 'Career', 'Support'];
-const settings = ['Change Password', 'LogOut'];
+const settings = ['LogOut'];
 
 function ResponsiveAppBar({ userType }) {
   console.log('usertype', userType)
@@ -50,7 +50,7 @@ function ResponsiveAppBar({ userType }) {
     // navigate('/login');
     window.location.href="/login"
     localStorage.setItem('currentUser', 'noUser');
-
+  
   };
 
   const user = localStorage.getItem("currentUser");

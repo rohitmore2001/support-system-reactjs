@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Card, Table, TableHead, TableBody, TableRow, TableCell, Button, Select, MenuItem } from '@mui/material';
+import { Box, Card, Table, TableHead, TableBody, TableRow, TableCell, Button, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import Swal from 'sweetalert2';
 import '../styles/Main.css';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ const AdminComponent = () => {
     const [tickets, setTickets] = useState(JSON.parse(localStorage.getItem('tickets')) || []);
     // Assume registeredData contains user data with username and usertype
     const [registeredData, setRegisteredData] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null); // State to track selected image URL
 
     const navigate = useNavigate();
     const handleCreateTicket = () => {
@@ -82,8 +83,17 @@ const AdminComponent = () => {
     .filter(user => user.userType === 'tech-support')
     .map(user => user.username);
 
-console.log('Tech support users:', techSupportUsers);
-        return (
+    // Function to open image dialog
+    const openImageDialog = (imageURL) => {
+        setSelectedImage(imageURL);
+    };
+
+    // Function to close image dialog
+    const handleCloseImageDialog = () => {
+        setSelectedImage(null);
+    };
+
+    return (
         <div style={{ margin: '2%' }}>
             {tickets.length === 0 ? (
                 <p>No tickets found.</p>
@@ -113,7 +123,7 @@ console.log('Tech support users:', techSupportUsers);
                                             <TableCell className="table-cell">{ticket.description}</TableCell>
                                             <TableCell className='table-cell'>
                                                 {ticket.imageBase64 && ticket.imageBase64.startsWith('data:image/') ? (
-                                                    <img src={ticket.imageBase64} alt="Attachment" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                                                    <img src={ticket.imageBase64} alt="Attachment" style={{ maxWidth: '100px', maxHeight: '100px', cursor: 'pointer' }} onClick={() => openImageDialog(ticket.imageBase64)} />
                                                 ) : (
                                                     <a href={ticket.imageBase64} target="_blank" rel="noopener noreferrer">{ticket.filename}</a>
                                                 )}
@@ -156,6 +166,19 @@ console.log('Tech support users:', techSupportUsers);
                     </Card>
                 </>
             )}
+
+            {/* Image Dialog */}
+            <Dialog open={!!selectedImage} onClose={handleCloseImageDialog}>
+                <DialogTitle>Attachment</DialogTitle>
+                <DialogContent>
+                    <img src={selectedImage} alt="Attachment" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseImageDialog} color="primary">
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };
